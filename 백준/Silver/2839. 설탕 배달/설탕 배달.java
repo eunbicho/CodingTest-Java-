@@ -1,24 +1,29 @@
 import java.util.Scanner;
- 
+
 public class Main {
+
+	static int N, cnt, answer;
 	public static void main(String[] args) {
-    
-		Scanner in = new Scanner(System.in);
-        
-		int N = in.nextInt();
+		Scanner sc = new Scanner(System.in);
+		N = sc.nextInt();
 		
+		if(N % 5 == 0) {
+			answer = N / 5;
+		} else {
+			while(N>=0) {
+				N-=3;
+				cnt++;
+				if(N % 5 == 0) {
+					answer = cnt + (N / 5);
+					break;
+				}
+				if(N<0)
+					answer = -1;
+			}
+			
+		}
 		
-		if (N == 4 || N == 7) {
-			System.out.println(-1);
-		}
-		else if (N % 5 == 0) {
-			System.out.println(N / 5);
-		}
-		else if (N % 5 == 1 || N % 5 == 3) {
-			System.out.println((N / 5) + 1);
-		}
-		else if (N % 5 == 2 || N % 5 == 4) {
-			System.out.println((N / 5) + 2);
-		}
+		System.out.println(answer);
 	}
+
 }
