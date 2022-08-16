@@ -9,7 +9,6 @@ public class Main {
 	static int maxArea, area; 
 	static int cnt;
 	static int[][] map;
-	static boolean visited[][];
 	static int[][] deltas = {{-1, 0},{1, 0},{0, -1},{0, 1}};
 	
 			
@@ -23,7 +22,6 @@ public class Main {
 		m = Integer.parseInt(tokens.nextToken());
 		
 		map = new int[n][m];
-		visited = new boolean[n][m];
 		
 		for(int r=0; r<n; r++) {
 			tokens = new StringTokenizer(input.readLine());
@@ -34,7 +32,7 @@ public class Main {
 		
 		for(int r=0; r<n; r++) {
 			for(int c=0; c<m; c++) {
-				if(!visited[r][c] && map[r][c] == 1) { // 방문을 안했고, 그 자리가 1이라면
+				if(map[r][c] == 1) { // 방문을 안했고, 그 자리가 1이라면
 					cnt++;
 					dfs(r, c);
 					
@@ -51,7 +49,7 @@ public class Main {
 	}
 	
 	public static void dfs(int r, int c) {
-		visited[r][c] = true; // 방문처리
+		map[r][c] = 0; // 방문처리
 		area++; // 넓이 1개씩 더하기
 		
 		for(int d=0; d<deltas.length; d++) {
@@ -59,7 +57,7 @@ public class Main {
 			int nc = c + deltas[d][1];
 			
 			if(Isin(nr, nc)) {
-				if(map[nr][nc] == 1 && !visited[nr][nc]) // 1이고 방문 안한 곳이면
+				if(map[nr][nc] == 1) // 1이고 방문 안한 곳이면
 					dfs(nr, nc);
 			}
 		}
