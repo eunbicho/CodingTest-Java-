@@ -28,8 +28,9 @@ public class Main {
 		dfsList(R, new boolean[N]);
 
 		for(int i=1; i<N; i++) {
-			System.out.println(order[i]);
+			output.append(order[i]).append('\n');
 		}
+		System.out.println(output);
 	}
 
 	static void dfsList(int v, boolean[] visited) {
