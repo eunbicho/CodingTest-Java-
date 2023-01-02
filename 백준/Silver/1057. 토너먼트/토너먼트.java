@@ -16,17 +16,13 @@ public class Main {
 		
 		go: while(true) {
 			round++;
-			//System.out.println("현재 라운드" + round);
-			
-			
-			int n = 0;
-			
+
 			// 현재 인원 확인 (인원에 따라 반복 횟수 결정)
 			// 짝수라면 N/2번 반복, 홀수라면 N/2+1번 반복
 			if(N%2 == 0) {
-				n = N/2;
+				N = N/2;
 			} else if(N%2 == 1) {
-				n = N/2+1;
+				N = N/2+1;
 			}
 			
 			// 앞에서부터 2명씩 경기시키기
@@ -36,11 +32,10 @@ public class Main {
 			
 			int p1 = -1;
 			int p2 = 0;
-			for(int i=1; i<=n; i++) {
+			for(int i=1; i<=N; i++) {
 				p1 += 2;
 				p2 = p1+1;
-
-				//System.out.println("현재 경기중인 사람 번호:" + p1 +" " + p2);
+				
 				// 두 사람이 경기에서 만났다면
 				if((p1 == Jimin && p2 == Hansu) || (p1 == Hansu && p2 == Jimin)) {
 					// 라운드 멈추기!
@@ -50,18 +45,17 @@ public class Main {
 				else if( p1 == Jimin || p2 == Jimin) {
 					// 이번에 이겨야하니까 다음 라운드에서의 번호 업데이트
 					Jimin = i;
-					//System.out.println("지민 번호 바뀜" + i + "한수번호는"+Hansu);
+
 				}
 				// 둘 중에 한명만 있는 경우(한수만 있는 경우)
 				else if(p1 == Hansu || p2 == Hansu) {
 					// 이번에 이겨야하니까 다음 라운드에서의 번호 업데이트
 					Hansu = i;
-					//System.out.println("한수 번호 바뀜" + i);
+
 				}
 			}
 			
-			// N 갱신
-			N = n;
+			
 		}
 		
 		System.out.println(round);
