@@ -25,7 +25,6 @@ public class Main {
 		
 		PriorityQueue<Point> pq = new PriorityQueue<>();
 		
-		// 선수과목이 없는 과목들을 먼저 1로 세팅
 		for(int i=0; i<M; i++) {
 			tokens = new StringTokenizer(input.readLine());
 			int A = Integer.parseInt(tokens.nextToken());
