@@ -44,7 +44,7 @@ public class Main {
 			for(int n=0; n<N; n++) {
 				for(int m=0; m<M; m++) {
 					if(map[n][m] == 1) {
-						bfs(new Point(n, m));
+						dfs(new Point(n, m));
 						ans++;
 					}
 				}
@@ -58,30 +58,19 @@ public class Main {
 		
 	}
 	
-	public static void bfs(Point p) {
+	public static void dfs(Point p) {
 		
-		Queue<Point> q = new LinkedList<>();
-		q.add(p);
-		map[p.r][p.c] = 0; // 방문한 곳은 0으로 바꾸기
+		map[p.r][p.c] = 0; // 방문처리
 		
-		while(!q.isEmpty()) {
-			
-			
-			int size = q.size();
-			while(size-- > 0) {
-				Point head = q.poll();
-				for(int d=0; d<deltas.length; d++) {
-					int nr = head.r + deltas[d][0];
-					int nc = head.c + deltas[d][1];
-					if(isIn(nr, nc) && map[nr][nc] == 1) { // 주위에 배추가 있으면
-						q.add(new Point(nr, nc)); // 큐에 넣고
-						map[nr][nc] = 0; // 방문처리
-						
-					}
-				}
+		
+		for(int d=0; d<deltas.length; d++) {
+			int nr = p.r + deltas[d][0];
+			int nc = p.c + deltas[d][1];
+			if(isIn(nr, nc) && map[nr][nc] == 1) { // 주위에 배추가 있으면
+				dfs(new Point(nr, nc));
+				
+				
 			}
-			
-			
 		}
 		
 		
