@@ -3,6 +3,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -36,7 +37,7 @@ public class Main {
 	
 	public static void bfs(Point start) {
 		
-		Queue<Point> q = new LinkedList<>();
+		Deque<Point> q = new LinkedList<>();
 		boolean[] visited = new boolean[N+1];
 		
 		q.add(start);
